@@ -1,0 +1,68 @@
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+      <h2 class="ui red image header">
+        <img src="https://material.angularjs.org/latest/img/icons/angular-logo.svg" class="image">
+        <div class="content">
+          Sign Up!
+        </div>
+      </h2>
+      <form class="ui large form" name="form" [ngClass]="{ 'loading': loading}" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+        <app-alert></app-alert>
+        <div class="ui stacked segment">
+          <div class="field">
+            <div class="ui left icon input" [ngClass]="{ 'error': f.submitted && !firstName.valid}">
+              <i class="address book icon"></i>
+              <input type="text" name="firstName" placeholder="First Name" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required >
+              <div *ngIf="f.submitted && !firstName.valid" class="ui left pointing red basic label">
+                First Name is required
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input" [ngClass]="{ 'error': f.submitted && !lastName.valid}">
+              <i class="address book outline icon"></i>
+              <input type="text" name="lastName" placeholder="Last Name" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required >
+              <div *ngIf="f.submitted && !lastName.valid" class="ui left pointing red basic label">
+                  Last Name is required
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input" [ngClass]="{ 'error': f.submitted && !email.valid}">
+              <i class="mail icon"></i>
+              <input type="email" name="email" placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" required email >
+              <div *ngIf="f.submitted && !email.valid" class="ui left pointing red basic label">
+                Email is required
+              </div>
+              
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input" [ngClass]="{ 'error': f.submitted && !username.valid}">
+              <i class="user icon"></i>
+              <input type="text" name="username" placeholder="Username" name="username" [(ngModel)]="model.username" #username="ngModel" required >
+              <div *ngIf="f.submitted && !username.valid" class="ui left pointing red basic label">
+                Username is required
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input" [ngClass]="{ 'error': f.submitted && !password.valid }">
+              <i class="lock icon"></i>
+              <input type="password" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" required >
+              <div *ngIf="f.submitted && !password.valid" class="ui left pointing red basic label">
+                  Password is required
+              </div>
+            </div>
+          </div>
+          <input type="submit"  class="ui fluid large red submit button" value="Sign Up!"/>
+        </div>
+ 
+      </form>
+  
+      <div class="ui message ">
+        Back to <a [routerLink]="['/login']">Login</a>
+      </div>
+    </div>
+  </div>
+  

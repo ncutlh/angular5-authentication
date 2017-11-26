@@ -1,0 +1,35 @@
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui red image header">
+      <img src="https://material.angularjs.org/latest/img/icons/angular-logo.svg" class="image">
+      <div class="content">
+        Log-in to your account
+      </div>
+    </h2>
+    <form class="ui large form" name="form" [ngClass]="{ 'loading': loading}" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <app-alert></app-alert>
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input" [ngClass]="{ 'error': f.submitted && !username.valid }">
+            <i class="user icon"></i>
+            <input type="text" name="username" placeholder="Username" [(ngModel)]="model.username" #username="ngModel" required>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input" [ngClass]="{ 'error': f.submitted && !password.valid }">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" required >
+          </div>
+        </div>
+        <input type="submit"  class="ui fluid large red submit button" value="Login"/>
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
+
+    <div class="ui message ">
+      New to us? <a [routerLink]="['/register']">Sign Up</a>
+    </div>
+  </div>
+</div>
